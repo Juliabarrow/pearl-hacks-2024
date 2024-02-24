@@ -7,4 +7,4 @@ Steps to update code:
 4. Commit changes (use ui and hit commit)
 5. Push changes to github `git push --set-upstream origin *name of branch*`
 
-Steps to merge branches:
+Use `git pull` to update your local files before/after merging
