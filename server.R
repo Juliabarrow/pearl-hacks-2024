@@ -21,7 +21,7 @@ shinyServer(function(input, output) {
       interest_rate_op2 <- 1.06
       interest_rate_op2 <- 1.08
     }
-    return(c(option1,option2,option3))
+    return(c(option1,option2,option3,interest_rate_op1,interest_rate_op2,interest_rate_op3))
   })
   
   output$second_option_in <- renderUI({
