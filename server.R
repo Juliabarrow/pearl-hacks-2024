@@ -45,11 +45,11 @@ investmentchoice <- reactive({
 })
 
   dataInput <- reactive({
-    req(input$year_in, input$type_in, input$investment_in, input$inrate)
+    req(input$year_in, input$type_in, input$investment_in, investmentchoice())
     
     year <- as.numeric(input$year_in)
     amt <- as.numeric(input$investment_in)
-    inrate <- as.numeric(input$inrate)
+    inrate <- as.numeric(investmentchoice())
     amt_type <- input$type_in 
     
     y_values <- numeric(year)
@@ -72,7 +72,7 @@ investmentchoice <- reactive({
     )
   })
   
-  output$plot <- renderPlot({
+  output$graph_out <- renderPlot({
     ggplot(dataInput(), aes(x = year, y = total)) +
       geom_point() +
       geom_line()
