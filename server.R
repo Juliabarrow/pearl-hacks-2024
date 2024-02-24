@@ -54,7 +54,7 @@ investmentchoice <- reactive({
     
     y_values <- numeric(year)
     
-    for (i in 1:year) {
+    for (i in seq_along(1:year)) {
       if (amt_type == "Monthly") {
         y_values[i] <- amt * inrate * 12 * i
       } else if (amt_type == "Lump Sum") {
@@ -65,7 +65,7 @@ investmentchoice <- reactive({
     }
     
     data.frame(
-      year = year,
+      year = seq_along(1:year),
       amt = amt,
       inrate = inrate,
       total = y_values
