@@ -13,7 +13,9 @@ shinyUI(fluidPage(
                ),
                mainPanel(
                  h2("Information"),
-                 p("here is some information about our website")
+                 h4("Welcome to our interactive webpage dedicated to helping you choose the best investment plan tailored to your financial goals and risk tolerance. Investing is a crucial aspect of financial planning, yet navigating through the myriad of options can be daunting. Whether you're saving for retirement, building wealth, or planning for a specific financial milestone, making informed investment decisions is key to achieving your objectives."),
+                 h4("In this user-friendly interface, we'll guide you through the process of understanding different investment options, assessing your risk profile, and selecting the most suitable investment plan. With interactive tools, informative resources, and expert guidance, we aim to empower you to make confident and well-informed investment choices."),
+                 h4("Let's embark on this journey together to unlock the potential of your finances and pave the way towards a secure financial future. Whether you're a novice investor or seasoned pro, this platform is designed to provide valuable insights and assistance every step of the way. Let's get started!")
                )
              )
              ),
