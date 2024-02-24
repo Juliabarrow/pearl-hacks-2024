@@ -1,8 +1,8 @@
-library(shiny)
 
+library(shiny)
 shinyServer(function(input, output) {
   
-  investoptions <- reactive({
+    investoptions <- reactive({
     if (input$goals_in == "Retirement" & input$year_in %in% c(5,10,15) & 
         input$risk_in == "Medium" & input$type_in == "Monthly"){
       option1 <- "This is your first option for retirement"
@@ -31,3 +31,39 @@ shinyServer(function(input, output) {
                 )
   })
 })
+
+  dataInput <- reactive({
+    req(input$year, input$amttype, input$amt, input$inrate)
+    
+    year <- as.numeric(input$year)
+    amt <- as.numeric(input$amt)
+    inrate <- as.numeric(input$inrate)
+    amt_type <- input$amt_type 
+    
+    y_values <- numeric(year)
+    
+    for (i in 1:year) {
+      if (amt_type == "monthly") {
+        y_values[i] <- amt * inrate * 12 * i
+      } else if (amt_type == "lump sum") {
+        y_values[i] <- amt * inrate * i
+      } else {
+        stop("Invalid amount type. Please make a different selection.")
+      }
+    }
+    
+    data.frame(
+      year = year,
+      amt = amt,
+      inrate = inrate,
+      total = y_values
+    )
+  })
+  
+  output$plot <- renderPlot({
+    ggplot(dataInput(), aes(x = year, y = total)) +
+      geom_point() +
+      geom_line()
+  })
+}
+
