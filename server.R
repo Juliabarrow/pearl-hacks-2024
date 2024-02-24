@@ -52,15 +52,26 @@ investmentchoice <- reactive({
     inrate <- as.numeric(investmentchoice())
     amt_type <- input$type_in 
     
-    y_values <- numeric(year)
+    y_values <- numeric()
     
-    for (i in seq_along(1:year)) {
+if(year > 15) {
+    for (i in seq(1, year, by = 5)) {
       if (amt_type == "Monthly") {
-        y_values[i] <- amt * inrate * 12 * i
+        y_values[i] <- amt * inrate * 12 * y_values[pmax(1, i - 1)]
       } else if (amt_type == "Lump Sum") {
-        y_values[i] <- amt * inrate * i
+        y_values[i] <- amt * inrate * y_values[pmax(1, i - 1)]
       } else {
         stop("Invalid amount type. Please make a different selection.")
+      }
+    }} else if (year <= 15){
+      for (i in seq(2, year, by = 1)) {
+        if (amt_type == "Monthly") {
+          y_values[i] <- amt * inrate * 12 * y_values[pmax(1, i - 1)]
+        } else if (amt_type == "Lump Sum") {
+          y_values[i] <- amt * inrate * y_values[pmax(1, i - 1)]
+        } else {
+          stop("Invalid amount type. Please make a different selection.")
+        }
       }
     }
     
