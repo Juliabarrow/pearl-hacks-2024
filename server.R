@@ -10,7 +10,7 @@ shinyServer(function(input, output) {
       option3 <- "this is your third option for retirement"
       interest_rate_op1 <- 1.04
       interest_rate_op2 <- 1.06
-      interest_rate_op2 <- 1.08
+      interest_rate_op3 <- 1.08
     }
     else if (input$goals_in == "Savings" & input$year_in %in% c(5,10,15) & 
              input$risk_in == "Medium" & input$type_in == "Monthly"){
@@ -19,7 +19,7 @@ shinyServer(function(input, output) {
       option3 <- "this is your third option for savings"
       interest_rate_op1 <- 1.04
       interest_rate_op2 <- 1.06
-      interest_rate_op2 <- 1.08
+      interest_rate_op3 <- 1.08
     }
     return(c(option1,option2,option3,interest_rate_op1,interest_rate_op2,interest_rate_op3))
   })
