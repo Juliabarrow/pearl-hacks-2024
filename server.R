@@ -30,6 +30,19 @@ shinyServer(function(input, output) {
                 choices = investoptions()[1:3]
                 )
   })
+  
+investmentchoice <- reactive({
+  if (input$invest_choice == investoptions()[1]){
+    interest_choice <- investoptions()[4]
+  }
+  else if (input$invest_choice == investoptions()[2]){
+    interest_choice <- investoptions()[5]
+  }
+  else if (input$invest_choice == investoptions()[3]){
+    interest_choice <- investoptions()[6]
+  }
+  return(interest_choice)
+})
 
   dataInput <- reactive({
     req(input$year_in, input$type_in, input$investment_in, input$inrate)
