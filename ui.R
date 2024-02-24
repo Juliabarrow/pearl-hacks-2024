@@ -24,16 +24,28 @@ shinyUI(fluidPage(
                  selectInput(inputId = "goals_in",
                              label = "What are your goals?", 
                              choices = c("Retirement", "Savings","Option 3","Option 4")),
+                 selectInput(inputId =  "year_in", 
+                   label = "In how many years do you need your money?", 
+                   choices = seq(5,50, by = 5)
+                 ),
                  sliderTextInput(inputId = "risk_in",
                              label = "What is your risk tolerance?", 
-                             choices = c("Low"," " ,"Medium", " ","High"),
+                             choices = c("Low","Medium", "High"),
                              selected = "Medium"),
-                 numericInput(inputId = "investment_in",
-                              label = "How much would you like to invest?",
-                              value = 10000,
-                              min = 0
-                              ),
-                 submitButton(text = "Submit")
+                 numericInputIcon("investment_in", 
+                                  "How much would you like to invest?", 
+                                  value = 10000, 
+                                  step= 1000, 
+                                  min= 0,
+                                  icon = list(icon("dollar-sign"),NULL)),
+                 radioButtons("type_in",
+                              label = "What kind of investment?",
+                              choices = c("Monthly", "Lump Sum"),
+                              selected = "Monthly"),
+                 submitButton(text = "Submit"),
+                 h1(),
+                 h3("Your recommended options:"),
+                 uiOutput("second_option_in")
                ),
                mainPanel(
                  plotOutput(outputId = "graph_out")
