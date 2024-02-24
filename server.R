@@ -85,10 +85,8 @@ if(year > 15) {
     )
   })
   
-  output$graph_out <- renderPlot({
-    ggplot(dataInput(), aes(x = year, y = total)) +
-      geom_point() +
-      geom_line()
+  output$graph_out <- renderPlotly({
+    plot_ly(dataInput(), x = ~year, y = ~total, type = 'scatter', mode = 'lines')
   })
 })
 

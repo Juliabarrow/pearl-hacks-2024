@@ -48,7 +48,7 @@ shinyUI(fluidPage(
                  uiOutput("second_option_in")
                ),
                mainPanel(
-                 plotOutput(outputId = "graph_out")
+                 plotlyOutput(outputId = "graph_out")
                )
              )
              )
