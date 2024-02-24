@@ -30,22 +30,21 @@ shinyServer(function(input, output) {
                 choices = investoptions()[1:3]
                 )
   })
-})
 
   dataInput <- reactive({
-    req(input$year, input$amttype, input$amt, input$inrate)
+    req(input$year_in, input$type_in, input$investment_in, input$inrate)
     
-    year <- as.numeric(input$year)
-    amt <- as.numeric(input$amt)
+    year <- as.numeric(input$year_in)
+    amt <- as.numeric(input$investment_in)
     inrate <- as.numeric(input$inrate)
-    amt_type <- input$amt_type 
+    amt_type <- input$type_in 
     
     y_values <- numeric(year)
     
     for (i in 1:year) {
-      if (amt_type == "monthly") {
+      if (amt_type == "Monthly") {
         y_values[i] <- amt * inrate * 12 * i
-      } else if (amt_type == "lump sum") {
+      } else if (amt_type == "Lump Sum") {
         y_values[i] <- amt * inrate * i
       } else {
         stop("Invalid amount type. Please make a different selection.")
@@ -65,5 +64,5 @@ shinyServer(function(input, output) {
       geom_point() +
       geom_line()
   })
-}
+})
 
