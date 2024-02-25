@@ -279,13 +279,20 @@ investmentchoice <- reactive({
         }
       }
     }
-    
+    if(year > 15) {
+      data.frame(
+        year = seq(1, year, by = 5),
+        amt = amt,
+        inrate = inrate,
+        total = y_values
+      )
+    } else{
     data.frame(
       year = seq_along(1:year),
       amt = amt,
       inrate = inrate,
       total = y_values
-    )
+    )}
   })
   
   output$graph_out <- renderPlotly({
