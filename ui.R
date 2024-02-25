@@ -25,7 +25,7 @@ shinyUI(fluidPage(
                sidebarPanel(
                  selectInput(inputId = "goals_in",
                              label = "What are your goals?", 
-                             choices = c("Retirement", "Savings","Option 3","Option 4")),
+                             choices = c("Retirement", "Savings")),
                  selectInput(inputId =  "year_in", 
                    label = "In how many years do you need your money?", 
                    choices = seq(5,50, by = 5)
@@ -47,7 +47,8 @@ shinyUI(fluidPage(
                  submitButton(text = "Submit"),
                  h1(),
                  h3("Your recommended options:"),
-                 uiOutput("second_option_in")
+                 uiOutput("second_option_in"),
+                 submitButton(text = "Submit")
                ),
                mainPanel(
                  plotlyOutput(outputId = "graph_out")

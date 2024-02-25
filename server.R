@@ -5,22 +5,222 @@ shinyServer(function(input, output) {
     investoptions <- reactive({
     if (input$goals_in == "Retirement" & input$year_in %in% c(5,10,15) & 
         input$risk_in == "Medium" & input$type_in == "Monthly"){
-      option1 <- "This is your first option for retirement"
-      option2 <- "This is your second option for retirement"
-      option3 <- "this is your third option for retirement"
-      interest_rate_op1 <- 1.04
-      interest_rate_op2 <- 1.06
-      interest_rate_op3 <- 1.08
+      option1 <- "This is your first option for retirement: VSMPX"
+      option2 <- "This is your second option for retirement: FXAIX"
+      option3 <- "this is your third option for retirement: VFIAX"
+      interest_rate_op1 <- data["VSMPX",3]
+      interest_rate_op2 <- data["FXAIX",3]
+      interest_rate_op3 <- data["VFIAX",3]
     }
+    else if (input$goals_in == "Retirement" & input$year_in %in% c(5,10,15) & 
+               input$risk_in == "Low" & input$type_in == "Monthly"){
+        option1 <- "This is your first option for retirement"
+        option2 <- "This is your second option for retirement"
+        option3 <- "this is your third option for retirement"
+        interest_rate_op1 <- data["VTSAX",3]
+        interest_rate_op2 <- data["VMFXX",3]
+        interest_rate_op3 <- data["SPAXX",3]
+    }
+    else if (input$goals_in == "Retirement" & input$year_in %in% c(5,10,15) & 
+               input$risk_in == "High" & input$type_in == "Monthly"){
+        option1 <- "This is your first option for retirement"
+        option2 <- "This is your second option for retirement"
+        option3 <- "this is your third option for retirement"
+        interest_rate_op1 <- data["VTSAX",3]
+        interest_rate_op2 <- data["VMFXX",3]
+        interest_rate_op3 <- data["SPAXX",3]
+    }
+    else if (input$goals_in == "Retirement" & input$year_in %in% c(5,10,15) & 
+          input$risk_in == "Medium" & input$type_in == "Lump Sum"){
+        option1 <- "This is your first option for retirement: VSMPX"
+        option2 <- "This is your second option for retirement: FXAIX"
+        option3 <- "this is your third option for retirement: VFIAX"
+        interest_rate_op1 <- data["VSMPX",3]
+        interest_rate_op2 <- data["FXAIX",3]
+        interest_rate_op3 <- data["VFIAX",3]
+      }
+    else if (input$goals_in == "Retirement" & input$year_in %in% c(5,10,15) & 
+            input$risk_in == "Low" & input$type_in == "Lump Sum"){
+        option1 <- "This is your first option for retirement"
+        option2 <- "This is your second option for retirement"
+        option3 <- "this is your third option for retirement"
+        interest_rate_op1 <- data["VTSAX",3]
+        interest_rate_op2 <- data["VMFXX",3]
+        interest_rate_op3 <- data["SPAXX",3]
+      }
+    else if (input$goals_in == "Retirement" & input$year_in %in% c(5,10,15) & 
+               input$risk_in == "High" & input$type_in == "Lump Sum"){
+        option1 <- "This is your first option for retirement"
+        option2 <- "This is your second option for retirement"
+        option3 <- "this is your third option for retirement"
+        interest_rate_op1 <- data["VTSAX",3]
+        interest_rate_op2 <- data["VMFXX",3]
+        interest_rate_op3 <- data["SPAXX",3]
+      }
+    else if (input$goals_in == "Retirement" & input$year_in > 15 & 
+          input$risk_in == "Medium" & input$type_in == "Monthly"){
+        option1 <- "This is your first option for retirement: VSMPX"
+        option2 <- "This is your second option for retirement: FXAIX"
+        option3 <- "this is your third option for retirement: VFIAX"
+        interest_rate_op1 <- data["VSMPX",3]
+        interest_rate_op2 <- data["FXAIX",3]
+        interest_rate_op3 <- data["VFIAX",3]
+      }
+    else if (input$goals_in == "Retirement" & input$year_in > 15 & 
+               input$risk_in == "Low" & input$type_in == "Monthly"){
+        option1 <- "This is your first option for retirement"
+        option2 <- "This is your second option for retirement"
+        option3 <- "this is your third option for retirement"
+        interest_rate_op1 <- data["VTSAX",3]
+        interest_rate_op2 <- data["VMFXX",3]
+        interest_rate_op3 <- data["SPAXX",3]
+      }
+    else if (input$goals_in == "Retirement" & input$year_in > 15 & 
+               input$risk_in == "High" & input$type_in == "Monthly"){
+        option1 <- "This is your first option for retirement"
+        option2 <- "This is your second option for retirement"
+        option3 <- "this is your third option for retirement"
+        interest_rate_op1 <- data["VTSAX",3]
+        interest_rate_op2 <- data["VMFXX",3]
+        interest_rate_op3 <- data["SPAXX",3]
+      }
+      else if (input$goals_in == "Retirement" & input$year_in > 15 & 
+          input$risk_in == "Medium" & input$type_in == "Lump Sum"){
+        option1 <- "This is your first option for retirement: VSMPX"
+        option2 <- "This is your second option for retirement: FXAIX"
+        option3 <- "this is your third option for retirement: VFIAX"
+        interest_rate_op1 <- data["VSMPX",3]
+        interest_rate_op2 <- data["FXAIX",3]
+        interest_rate_op3 <- data["VFIAX",3]
+      }
+      else if (input$goals_in == "Retirement" & input$year_in > 15 & 
+               input$risk_in == "Low" & input$type_in == "Lump Sum"){
+        option1 <- "This is your first option for retirement"
+        option2 <- "This is your second option for retirement"
+        option3 <- "this is your third option for retirement"
+        interest_rate_op1 <- data["VTSAX",3]
+        interest_rate_op2 <- data["VMFXX",3]
+        interest_rate_op3 <- data["SPAXX",3]
+      }
+      else if (input$goals_in == "Retirement" & input$year_in > 15 & 
+               input$risk_in == "High" & input$type_in == "Lump Sum"){
+        option1 <- "This is your first option for retirement"
+        option2 <- "This is your second option for retirement"
+        option3 <- "this is your third option for retirement"
+        interest_rate_op1 <- data["VTSAX",3]
+        interest_rate_op2 <- data["VMFXX",3]
+        interest_rate_op3 <- data["SPAXX",3]
+      }
+      
+      
     else if (input$goals_in == "Savings" & input$year_in %in% c(5,10,15) & 
              input$risk_in == "Medium" & input$type_in == "Monthly"){
       option1 <- "This is your first option for savings"
       option2 <- "This is your second option for savings"
       option3 <- "this is your third option for savings"
-      interest_rate_op1 <- 1.04
-      interest_rate_op2 <- 1.06
-      interest_rate_op3 <- 1.08
+      interest_rate_op1 <- data["VTSAX",3]
+      interest_rate_op2 <- data["VMFXX",3]
+      interest_rate_op3 <- data["SPAXX",3]
     }
+    else if (input$goals_in == "Savings" & input$year_in %in% c(5,10,15) & 
+               input$risk_in == "Low" & input$type_in == "Monthly"){
+        option1 <- "This is your first option for Savings"
+        option2 <- "This is your second option for Savings"
+        option3 <- "this is your third option for Savings"
+        interest_rate_op1 <- data["VTSAX",3]
+        interest_rate_op2 <- data["VMFXX",3]
+        interest_rate_op3 <- data["SPAXX",3]
+      }
+      else if (input$goals_in == "Savings" & input$year_in %in% c(5,10,15) & 
+               input$risk_in == "High" & input$type_in == "Monthly"){
+        option1 <- "This is your first option for Savings"
+        option2 <- "This is your second option for Savings"
+        option3 <- "this is your third option for Savings"
+        interest_rate_op1 <- data["VTSAX",3]
+        interest_rate_op2 <- data["VMFXX",3]
+        interest_rate_op3 <- data["SPAXX",3]
+      }
+      else if (input$goals_in == "Savings" & input$year_in %in% c(5,10,15) & 
+               input$risk_in == "Medium" & input$type_in == "Lump Sum"){
+        option1 <- "This is your first option for Savings: VSMPX"
+        option2 <- "This is your second option for Savings: FXAIX"
+        option3 <- "this is your third option for Savings: VFIAX"
+        interest_rate_op1 <- data["VSMPX",3]
+        interest_rate_op2 <- data["FXAIX",3]
+        interest_rate_op3 <- data["VFIAX",3]
+      }
+      else if (input$goals_in == "Savings" & input$year_in %in% c(5,10,15) & 
+               input$risk_in == "Low" & input$type_in == "Lump Sum"){
+        option1 <- "This is your first option for Savings"
+        option2 <- "This is your second option for Savings"
+        option3 <- "this is your third option for Savings"
+        interest_rate_op1 <- data["VTSAX",3]
+        interest_rate_op2 <- data["VMFXX",3]
+        interest_rate_op3 <- data["SPAXX",3]
+      }
+      else if (input$goals_in == "Savings" & input$year_in %in% c(5,10,15) & 
+               input$risk_in == "High" & input$type_in == "Lump Sum"){
+        option1 <- "This is your first option for Savings"
+        option2 <- "This is your second option for Savings"
+        option3 <- "this is your third option for Savings"
+        interest_rate_op1 <- data["VTSAX",3]
+        interest_rate_op2 <- data["VMFXX",3]
+        interest_rate_op3 <- data["SPAXX",3]
+      }
+      else if (input$goals_in == "Savings" & input$year_in > 15 & 
+               input$risk_in == "Medium" & input$type_in == "Monthly"){
+        option1 <- "This is your first option for Savings: VSMPX"
+        option2 <- "This is your second option for Savings: FXAIX"
+        option3 <- "this is your third option for Savings: VFIAX"
+        interest_rate_op1 <- data["VSMPX",3]
+        interest_rate_op2 <- data["FXAIX",3]
+        interest_rate_op3 <- data["VFIAX",3]
+      }
+      else if (input$goals_in == "Savings" & input$year_in > 15 & 
+               input$risk_in == "Low" & input$type_in == "Monthly"){
+        option1 <- "This is your first option for Savings"
+        option2 <- "This is your second option for Savings"
+        option3 <- "this is your third option for Savings"
+        interest_rate_op1 <- data["VTSAX",3]
+        interest_rate_op2 <- data["VMFXX",3]
+        interest_rate_op3 <- data["SPAXX",3]
+      }
+      else if (input$goals_in == "Savings" & input$year_in > 15 & 
+               input$risk_in == "High" & input$type_in == "Monthly"){
+        option1 <- "This is your first option for Savings"
+        option2 <- "This is your second option for Savings"
+        option3 <- "this is your third option for Savings"
+        interest_rate_op1 <- data["VTSAX",3]
+        interest_rate_op2 <- data["VMFXX",3]
+        interest_rate_op3 <- data["SPAXX",3]
+      }
+      else if (input$goals_in == "Savings" & input$year_in > 15 & 
+               input$risk_in == "Medium" & input$type_in == "Lump Sum"){
+        option1 <- "This is your first option for Savings: VSMPX"
+        option2 <- "This is your second option for Savings: FXAIX"
+        option3 <- "this is your third option for Savings: VFIAX"
+        interest_rate_op1 <- data["VSMPX",3]
+        interest_rate_op2 <- data["FXAIX",3]
+        interest_rate_op3 <- data["VFIAX",3]
+      }
+      else if (input$goals_in == "Savings" & input$year_in > 15 & 
+               input$risk_in == "Low" & input$type_in == "Lump Sum"){
+        option1 <- "This is your first option for Savings"
+        option2 <- "This is your second option for Savings"
+        option3 <- "this is your third option for Savings"
+        interest_rate_op1 <- data["VTSAX",3]
+        interest_rate_op2 <- data["VMFXX",3]
+        interest_rate_op3 <- data["SPAXX",3]
+      }
+      else if (input$goals_in == "Savings" & input$year_in > 15 & 
+               input$risk_in == "High" & input$type_in == "Lump Sum"){
+        option1 <- "This is your first option for Savings"
+        option2 <- "This is your second option for Savings"
+        option3 <- "this is your third option for Savings"
+        interest_rate_op1 <- data["VTSAX",3]
+        interest_rate_op2 <- data["VMFXX",3]
+        interest_rate_op3 <- data["SPAXX",3]
+      }
     return(c(option1,option2,option3,interest_rate_op1,interest_rate_op2,interest_rate_op3))
   })
   
