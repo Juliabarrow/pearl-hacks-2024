@@ -257,11 +257,11 @@ investmentchoice <- reactive({
   if(year > 15) {
     for (i in seq(2, (year/5), by = 1)) {
       if (amt_type == "Monthly") {
-        y_values[1] <- (1 + inrate)^(1) + amt
-        y_values[i] <- (1 + inrate)^(i) * (y_values[i-1]) + amt
+        y_values[1] <- ((1 + inrate)^(1)*12) + (amt*12)
+        y_values[i] <- (1 + inrate)^(i*5) * (y_values[i-1]) + (amt*12)
       } else if (amt_type == "Lump Sum") {
         y_values[1] <- (1+ inrate)^(1) + amt
-        y_values[i] <- (1+inrate)^(i)  * (y_values[i-1])
+        y_values[i] <- (1+inrate)^(i*5)  * (y_values[i-1])
       } else {
         stop("Invalid amount type. Please make a different selection.")
       }
@@ -269,8 +269,8 @@ investmentchoice <- reactive({
     } else if (year <= 15){
       for (i in seq(2, year, by = 1)) {
         if (amt_type == "Monthly") {
-          y_values[1] <- (1 + inrate)^(1) + amt
-          y_values[i] <- (1 + inrate)^(i) * (y_values[i-1]) + amt
+          y_values[1] <- (1 + inrate)^(1) + (amt*12)
+          y_values[i] <- (1 + inrate)^(i) * (y_values[i-1]) + (amt*12)
         } else if (amt_type == "Lump Sum") {
           y_values[1] <- (1+ inrate)^(1) + amt
           y_values[i] <- (1+inrate)^(i)  * (y_values[i-1])
