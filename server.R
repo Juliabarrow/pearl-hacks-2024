@@ -8,18 +8,18 @@ shinyServer(function(input, output) {
       option1 <- "This is your first option for retirement"
       option2 <- "This is your second option for retirement"
       option3 <- "this is your third option for retirement"
-      interest_rate_op1 <- 1.04
-      interest_rate_op2 <- 1.06
-      interest_rate_op3 <- 1.08
+      interest_rate_op1 <- 0.25
+      interest_rate_op2 <- 0.25
+      interest_rate_op3 <- 0.25
     }
     else if (input$goals_in == "Savings" & input$year_in %in% c(5,10,15) & 
              input$risk_in == "Medium" & input$type_in == "Monthly"){
       option1 <- "This is your first option for savings"
       option2 <- "This is your second option for savings"
       option3 <- "this is your third option for savings"
-      interest_rate_op1 <- 1.04
-      interest_rate_op2 <- 1.06
-      interest_rate_op3 <- 1.08
+      interest_rate_op1 <- 0.25
+      interest_rate_op2 <- 0.25
+      interest_rate_op3 <- 0.25
     }
     return(c(option1,option2,option3,interest_rate_op1,interest_rate_op2,interest_rate_op3))
   })
@@ -57,20 +57,22 @@ investmentchoice <- reactive({
 if(year > 15) {
     for (i in seq(1, year, by = 5)) {
       if (amt_type == "Monthly") {
-        y_values[i] <- inrate * 12 * y_values[i-1]
+        y_values[1] <- (1 + inrate/12)^(i/5) + amt
+        y_values[i] <- (1 + inrate/12)^(i/5) * (y_values[i-1]) + amt
       } else if (amt_type == "Lump Sum") {
-        y_values[i] <- inrate * y_values[i-1]
+        y_values[1] <- (1+ inrate)^(i/5) + amt
+        y_values[i] <- (1+inrate)^(i/5)  * (y_values[i-1])
       } else {
         stop("Invalid amount type. Please make a different selection.")
       }
     }} else if (year <= 15){
       for (i in seq(2, year, by = 1)) {
         if (amt_type == "Monthly") {
-          print(i)
-          print(y_values[pmax(1, i - 1)])
-          y_values[i] <- inrate * 12 * y_values[i-1]
+          y_values[1] <- (1 + inrate/12)^(1) + amt
+          y_values[i] <- (1 + inrate/12)^(i) * (y_values[i-1]) + amt
         } else if (amt_type == "Lump Sum") {
-          y_values[i] <- inrate * y_values[i-1]
+          y_values[1] <- (1+ inrate)^(1) + amt
+          y_values[i] <- (1+inrate)^(i)  * (y_values[i-1])
         } else {
           stop("Invalid amount type. Please make a different selection.")
         }
