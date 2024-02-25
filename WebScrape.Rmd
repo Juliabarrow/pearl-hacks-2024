@@ -1,0 +1,96 @@
+---
+title: "Web Scrape Mutual Funds"
+author: "Sarah"
+date: "2024-02-24"
+output: html_document
+---
+```{r}
+library(rvest)
+library(dplyr)
+library(stringr)
+mainpage <- read_html("https://www.marketwatch.com/tools/top-25-mutual-funds")
+funds = c("VSMPX", "FXAIX", "VFIAX", "VTSAX", "VMFXX", "SPAXX", "FDRXX", "FGTXX", "VGTSX", "SWVXX",
+         "OGVXX", "VIIIX", "VFFSX", "FRGXX", "VTBNX", "VTBIX", "GVMXX", "AGTHX", "TFDXX", "VMRXX",
+         "MVRXX", "VINIX", "FCNTX", "TTTXX")
+webpages = function(index){
+  link = (paste("https://www.marketwatch.com/investing/fund/",index,"?mod=top25mutualfunds_quotes", sep = ""))
+  html_page <- read_html(link)
+  assign(index, html_page, envir = .GlobalEnv)
+  
+}
+for (id in funds){
+  webpages(id)
+}
+```
+
+```{r}
+get_risk <- function(index){
+  tables <- get(index) %>%
+  html_nodes("table") %>%
+  html_text() 
+  risk <- Filter(nzchar, str_trim(strsplit(tables[7], "\n")[[1]]))
+
+# alpha is often considered to represent the value that a portfolio manager adds or subtracts from a fund portfolio's return. An alpha of 1.0 means the fund has outperformed its benchmark index by 1%. Correspondingly, an alpha of -1.0 would indicate an underperformance of 1%. For investors, the higher the alpha the better
+# A beta of 1.0 indicates that the investment's price will move in lock-step with the market. A beta of less than 1.0 indicates that the investment will be less volatile than the market. Correspondingly, a beta of more than 1.0 indicates that the investment's price will be more volatile than the market. For example, if a fund portfolio's beta is 1.2, it is theoretically 20% more volatile than the market.
+# Standard deviation measures the dispersion of data from its mean. Basically, the more spread out the data, the greater the difference is from the norm. In finance, standard deviation is applied to the annual rate of return of an investment to measure its volatility (risk). A volatile stock would have a high standard deviation. With mutual funds, the standard deviation tells us how much the return on a fund is deviating from the expected returns based on its historical performance.
+# R-squared values range from 0 to 100. According to Morningstar, a mutual fund with an R-squared value between 85 and 100 has a performance record that is closely correlated to the index. A fund rated 70 or less typically does not perform like the index.
+  
+  risk_measures = data.frame("Measure" = risk[seq(1, length(risk), by = 2)], "Number" =
+                               as.numeric(risk[seq(2,length(risk), by = 2)]))
+  assign(paste("risk_measures_",index, sep = ""), risk_measures, envir = .GlobalEnv)
+}
+for (id in funds){
+  get_risk(id)
+}
+```
+```{r}
+get_return <- function(index){
+  tables <- get(index) %>%
+    html_nodes("table") %>%
+    html_text() 
+  return_rate <- Filter(nzchar, str_trim(strsplit(tables[9], "\n")[[1]]))
+    
+  returns = data.frame("Measure" = return_rate[seq(6, length(return_rate), by = 6)], "Number" =
+                                 (return_rate[seq(7,length(return_rate), by = 6)]))
+  assign(paste("return_rates_",index, sep = ""), returns, envir = .GlobalEnv)
+}
+for (id in funds){
+  get_return(id)
+}
+```
+
+```{r}
+correct_form <- function(index){
+  dataframe = get(paste("return_rates_",index, sep = ""))
+  transpose <- as.data.frame(t(dataframe))[2, ]
+  rownames(transpose) <- NULL
+  colnames(transpose) <- as.data.frame(t(dataframe))[1, ]
+  transpose["Fund"] <- index
+  dataframe2 = get(paste("risk_measures_",index, sep = ""))
+  transpose2 = as.data.frame(t(dataframe2))[2, ]
+  rownames(transpose2) <- NULL
+  colnames(transpose2) <- as.data.frame(t(dataframe2))[1, ]
+  
+  assign(paste("data_",index, sep = ""), select(cbind(transpose, transpose2),c(6, 1:5,7:10)), envir = .GlobalEnv)
+}
+
+for (id in funds){
+  correct_form(id)
+}
+final_csv = (get(paste("data_",funds[1], sep = "")))
+
+for (i in 2:length(funds)){
+  final_csv = rbind(final_csv, get(paste("data_",funds[i], sep = "")))
+}
+remove_percent <- function(x) {
+  gsub("%", "", x)
+}
+final_csv<- data.frame(lapply(final_csv, remove_percent)) |>
+  mutate(YTD = as.numeric(YTD)/100) |> 
+  mutate(X1yr = as.numeric(X1yr)/100) |>
+  mutate(X5yr = as.numeric(X5yr2)/100) |> 
+  select(c(Fund, YTD, X1yr, X5yr), (-c(X3yr2, X10yr2, X5yr2))) 
+
+write.csv(final_csv, "data.csv", row.names = FALSE)
+```
+

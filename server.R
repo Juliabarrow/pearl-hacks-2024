@@ -88,7 +88,7 @@ if(year > 15) {
   })
   
   output$graph_out <- renderPlotly({
-    plot_ly(dataInput(), x = ~year, y =~total, type = 'scatter', mode = 'line')
+    plot_ly(dataInput(), x = ~year, y = ~total, type = 'scatter', mode = 'lines')
   })
 })
 
