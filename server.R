@@ -57,7 +57,7 @@ shinyServer(function(input, output) {
         interest_rate_op2 <- data["VMFXX",3]
         interest_rate_op3 <- data["SPAXX",3]
       }
-    else if (input$goals_in == "Retirement" & input$year_in > 15 & 
+    else if (input$goals_in == "Retirement" & input$year_in %in% c(20,25,30,35,40,45,50) & 
           input$risk_in == "Medium" & input$type_in == "Monthly"){
         option1 <- "This is your first option for retirement: VSMPX"
         option2 <- "This is your second option for retirement: FXAIX"
@@ -66,7 +66,7 @@ shinyServer(function(input, output) {
         interest_rate_op2 <- data["FXAIX",3]
         interest_rate_op3 <- data["VFIAX",3]
       }
-    else if (input$goals_in == "Retirement" & input$year_in > 15 & 
+    else if (input$goals_in == "Retirement" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "Low" & input$type_in == "Monthly"){
         option1 <- "This is your first option for retirement"
         option2 <- "This is your second option for retirement"
@@ -75,7 +75,7 @@ shinyServer(function(input, output) {
         interest_rate_op2 <- data["VMFXX",3]
         interest_rate_op3 <- data["SPAXX",3]
       }
-    else if (input$goals_in == "Retirement" & input$year_in > 15 & 
+    else if (input$goals_in == "Retirement" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "High" & input$type_in == "Monthly"){
         option1 <- "This is your first option for retirement"
         option2 <- "This is your second option for retirement"
@@ -84,7 +84,7 @@ shinyServer(function(input, output) {
         interest_rate_op2 <- data["VMFXX",3]
         interest_rate_op3 <- data["SPAXX",3]
       }
-      else if (input$goals_in == "Retirement" & input$year_in > 15 & 
+      else if (input$goals_in == "Retirement" & input$year_in %in% c(20,25,30,35,40,45,50) & 
           input$risk_in == "Medium" & input$type_in == "Lump Sum"){
         option1 <- "This is your first option for retirement: VSMPX"
         option2 <- "This is your second option for retirement: FXAIX"
@@ -93,7 +93,7 @@ shinyServer(function(input, output) {
         interest_rate_op2 <- data["FXAIX",3]
         interest_rate_op3 <- data["VFIAX",3]
       }
-      else if (input$goals_in == "Retirement" & input$year_in > 15 & 
+      else if (input$goals_in == "Retirement" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "Low" & input$type_in == "Lump Sum"){
         option1 <- "This is your first option for retirement"
         option2 <- "This is your second option for retirement"
@@ -102,7 +102,7 @@ shinyServer(function(input, output) {
         interest_rate_op2 <- data["VMFXX",3]
         interest_rate_op3 <- data["SPAXX",3]
       }
-      else if (input$goals_in == "Retirement" & input$year_in > 15 & 
+      else if (input$goals_in == "Retirement" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "High" & input$type_in == "Lump Sum"){
         option1 <- "This is your first option for retirement"
         option2 <- "This is your second option for retirement"
@@ -167,7 +167,7 @@ shinyServer(function(input, output) {
         interest_rate_op2 <- data["VMFXX",3]
         interest_rate_op3 <- data["SPAXX",3]
       }
-      else if (input$goals_in == "Savings" & input$year_in > 15 & 
+      else if (input$goals_in == "Savings" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "Medium" & input$type_in == "Monthly"){
         option1 <- "This is your first option for Savings: VSMPX"
         option2 <- "This is your second option for Savings: FXAIX"
@@ -176,7 +176,7 @@ shinyServer(function(input, output) {
         interest_rate_op2 <- data["FXAIX",3]
         interest_rate_op3 <- data["VFIAX",3]
       }
-      else if (input$goals_in == "Savings" & input$year_in > 15 & 
+      else if (input$goals_in == "Savings" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "Low" & input$type_in == "Monthly"){
         option1 <- "This is your first option for Savings"
         option2 <- "This is your second option for Savings"
@@ -185,7 +185,7 @@ shinyServer(function(input, output) {
         interest_rate_op2 <- data["VMFXX",3]
         interest_rate_op3 <- data["SPAXX",3]
       }
-      else if (input$goals_in == "Savings" & input$year_in > 15 & 
+      else if (input$goals_in == "Savings" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "High" & input$type_in == "Monthly"){
         option1 <- "This is your first option for Savings"
         option2 <- "This is your second option for Savings"
@@ -194,7 +194,7 @@ shinyServer(function(input, output) {
         interest_rate_op2 <- data["VMFXX",3]
         interest_rate_op3 <- data["SPAXX",3]
       }
-      else if (input$goals_in == "Savings" & input$year_in > 15 & 
+      else if (input$goals_in == "Savings" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "Medium" & input$type_in == "Lump Sum"){
         option1 <- "This is your first option for Savings: VSMPX"
         option2 <- "This is your second option for Savings: FXAIX"
@@ -203,7 +203,7 @@ shinyServer(function(input, output) {
         interest_rate_op2 <- data["FXAIX",3]
         interest_rate_op3 <- data["VFIAX",3]
       }
-      else if (input$goals_in == "Savings" & input$year_in > 15 & 
+      else if (input$goals_in == "Savings" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "Low" & input$type_in == "Lump Sum"){
         option1 <- "This is your first option for Savings"
         option2 <- "This is your second option for Savings"
@@ -212,7 +212,7 @@ shinyServer(function(input, output) {
         interest_rate_op2 <- data["VMFXX",3]
         interest_rate_op3 <- data["SPAXX",3]
       }
-      else if (input$goals_in == "Savings" & input$year_in > 15 & 
+      else if (input$goals_in == "Savings" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "High" & input$type_in == "Lump Sum"){
         option1 <- "This is your first option for Savings"
         option2 <- "This is your second option for Savings"
@@ -254,22 +254,27 @@ investmentchoice <- reactive({
     
     y_values <- c(amt)
     
-if(year > 15) {
-    for (i in seq(1, year, by = 5)) {
+  if(year > 15) {
+    for (i in seq(2, year, by = 5)) {
       if (amt_type == "Monthly") {
-        y_values[1] <- (1 + inrate/12)^(i/5) + amt
-        y_values[i] <- (1 + inrate/12)^(i/5) * (y_values[i-1]) + amt
+        print(i)
+        print(i-5)
+        #y_values[1] <- (1 + inrate)^(1) + amt
+        for (j in seq(2,year/5 ,by=1)){
+          y_values[j] <- (1 + inrate)^(i) * (y_values[j-1]) + amt
+          }
       } else if (amt_type == "Lump Sum") {
-        y_values[1] <- (1+ inrate)^(i/5) + amt
-        y_values[i] <- (1+inrate)^(i/5)  * (y_values[i-1])
+        y_values[1] <- (1+ inrate)^(1) + amt
+        y_values[i] <- (1+inrate)^(i)  * (y_values[i-1])
       } else {
         stop("Invalid amount type. Please make a different selection.")
       }
-    }} else if (year <= 15){
+    }
+    } else if (year <= 15){
       for (i in seq(2, year, by = 1)) {
         if (amt_type == "Monthly") {
-          y_values[1] <- (1 + inrate/12)^(1) + amt
-          y_values[i] <- (1 + inrate/12)^(i) * (y_values[i-1]) + amt
+          y_values[1] <- (1 + inrate)^(1) + amt
+          y_values[i] <- (1 + inrate)^(i) * (y_values[i-1]) + amt
         } else if (amt_type == "Lump Sum") {
           y_values[1] <- (1+ inrate)^(1) + amt
           y_values[i] <- (1+inrate)^(i)  * (y_values[i-1])
