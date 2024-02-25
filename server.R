@@ -296,7 +296,10 @@ investmentchoice <- reactive({
   })
   
   output$graph_out <- renderPlotly({
-    plot_ly(dataInput(), x = ~year, y = ~total, type = 'scatter', mode = 'lines')
+    plot_ly(dataInput(), x = ~year, y = ~total, type = 'scatter', mode = 'lines') %>%
+      layout(title = 'Total Expected Value', xaxis = list(title = 'Year'), 
+             
+             yaxis = list(title = 'Dollars'))
   })
 })
 
