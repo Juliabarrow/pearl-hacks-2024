@@ -9,7 +9,8 @@ shinyUI(fluidPage(
              h1("Homepage"),
              sidebarLayout(
                sidebarPanel(
-                p("here is some info about is") 
+                 h2("About Us"),
+                p("We are a team of undergraduate students who aim to help people achieve their financial goals with more ease than traditional tools.") 
                ),
                mainPanel(
                  h2("Information"),

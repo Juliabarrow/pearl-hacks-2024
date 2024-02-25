@@ -5,108 +5,108 @@ shinyServer(function(input, output) {
     investoptions <- reactive({
     if (input$goals_in == "Retirement" & input$year_in %in% c(5,10,15) & 
         input$risk_in == "Medium" & input$type_in == "Monthly"){
-      option1 <- "This is your first option for retirement: MVRXX"
-      option2 <- "This is your second option for retirement: AGTHX"
-      option3 <- "this is your third option for retirement: TFDXX"
+      option1 <- "This is your first option for retirement: Morgan Stanley Inst Liq Government Port; Institutional"
+      option2 <- "This is your second option for retirement: American Funds Growth Fund of America"
+      option3 <- "This is your third option for retirement: BlackRock Liquidity FedFund; Institutional"
       interest_rate_op1 <- data["MVRXX",3]
       interest_rate_op2 <- data["AGTHX",3]
       interest_rate_op3 <- data["TFDXX",3]
     }
     else if (input$goals_in == "Retirement" & input$year_in %in% c(5,10,15) & 
                input$risk_in == "Low" & input$type_in == "Monthly"){
-        option1 <- "This is your first option for retirement: VTSAX"
-        option2 <- "This is your second option for retirement: VFIAX"
-        option3 <- "this is your third option for retirement: VSMPX"
+        option1 <- "This is your first option for retirement: Vanguard Total STock Market Index Fund; Admiral"
+        option2 <- "This is your second option for retirement: Vanguard 500 Index Fund; Admiral"
+        option3 <- "This is your third option for retirement: Vanguard Total STock Market Index Fund; Institutional Plus"
         interest_rate_op1 <- data["VTSAX",3]
         interest_rate_op2 <- data["VFIAX",3]
         interest_rate_op3 <- data["VSMPX",3]
     }
     else if (input$goals_in == "Retirement" & input$year_in %in% c(5,10,15) & 
                input$risk_in == "High" & input$type_in == "Monthly"){
-        option1 <- "This is your first option for retirement: OGVXX"
-        option2 <- "This is your second option for retirement: VTBNX"
-        option3 <- "this is your third option for retirement: TTTXX"
+        option1 <- "This is your first option for retirement: JPMorgan US Government Money Market Fund; Capital"
+        option2 <- "This is your second option for retirement: Vanguard Total Bond Market II Index Fund; Instituational"
+        option3 <- "This is your third option for retirement: BlackRock Liquidity Treaury Trust Fund; Institutional"
         interest_rate_op1 <- data["OGVXX",3]
         interest_rate_op2 <- data["VTBNX",3]
         interest_rate_op3 <- data["TTTXX",3]
     }
     else if (input$goals_in == "Retirement" & input$year_in %in% c(5,10,15) & 
           input$risk_in == "Medium" & input$type_in == "Lump Sum"){
-        option1 <- "This is your first option for retirement: MVRXX"
-        option2 <- "This is your second option for retirement: FXAIX"
-        option3 <- "this is your third option for retirement: AGTHX"
+        option1 <- "This is your first option for retirement: Morgan Stanley Inst Liq Government Port; Institutional"
+        option2 <- "This is your second option for retirement: Fidelity 500 Index Fund"
+        option3 <- "This is your third option for retirement: American Funds Growth Fund of America"
         interest_rate_op1 <- data["MVRXX",3]
         interest_rate_op2 <- data["TFDXX",3]
         interest_rate_op3 <- data["AGTHX",3]
       }
     else if (input$goals_in == "Retirement" & input$year_in %in% c(5,10,15) & 
             input$risk_in == "Low" & input$type_in == "Lump Sum"){
-        option1 <- "This is your first option for retirement: VTSAX"
-        option2 <- "This is your second option for retirement: VFIAX"
-        option3 <- "this is your third option for retirement: VSMPX"
+        option1 <- "This is your first option for retirement: Vanguard Total STock Market Index Fund; Admiral"
+        option2 <- "This is your second option for retirement: Vanguard 500 Index Fund; Admiral"
+        option3 <- "This is your third option for retirement: Vanguard Total STock Market Index Fund; Institutional Plus"
         interest_rate_op1 <- data["VTSAX",3]
         interest_rate_op2 <- data["VFIAX",3]
         interest_rate_op3 <- data["VSMPX",3]
       }
       else if (input$goals_in == "Retirement" & input$year_in %in% c(5,10,15) & 
                input$risk_in == "High" & input$type_in == "Lump Sum"){
-        option1 <- "This is your first option for retirement: OGVXX"
-        option2 <- "This is your second option for retirement: VTBNX"
-        option3 <- "this is your third option for retirement: TTTXX"
+        option1 <- "This is your first option for retirement: JPMorgan US Government Money Market Fund;Capital"
+        option2 <- "This is your second option for retirement: Vanguard Total Bond Market II Index Fund; Instituational"
+        option3 <- "This is your third option for retirement: BlackRock Liquidity Treaury Trust Fund; Institutional"
         interest_rate_op1 <- data["OGVXX",3]
         interest_rate_op2 <- data["VTBNX",3]
         interest_rate_op3 <- data["TTTXX",3]
       }
     else if (input$goals_in == "Retirement" & input$year_in %in% c(20,25,30,35,40,45,50) & 
           input$risk_in == "Medium" & input$type_in == "Monthly"){
-        option1 <- "This is your first option for retirement: VFFSX"
-        option2 <- "This is your second option for retirement: TFDXX"
-        option3 <- "this is your third option for retirement: VINIX"
+        option1 <- "This is your first option for retirement: Vanguard 500 Index Fund; Institutional Select"
+        option2 <- "This is your second option for retirement: BlackRock Liquidity FedFund; Institutional"
+        option3 <- "This is your third option for retirement: Vanguard Institutional Index Fund; Institutional"
         interest_rate_op1 <- data["VFFSX",4]
         interest_rate_op2 <- data["TFDXX",4]
         interest_rate_op3 <- data["VINIX",4]
       }
     else if (input$goals_in == "Retirement" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "Low" & input$type_in == "Monthly"){
-        option1 <- "This is your first option for retirement: VMFXX"
-        option2 <- "This is your second option for retirement: VTSAX"
-        option3 <- "this is your third option for retirement: FXAIX"
+        option1 <- "This is your first option for retirement: Vanguard Federal Money Market Fund; Investor"
+        option2 <- "This is your second option for retirement: Vanguard Total STock Market Index Fund; Admiral"
+        option3 <- "This is your third option for retirement: Fidelity 500 Index Fund"
         interest_rate_op1 <- data["VMFXX",4]
         interest_rate_op2 <- data["VTSAX",4]
         interest_rate_op3 <- data["FXAIX",4]
       }
     else if (input$goals_in == "Retirement" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "High" & input$type_in == "Monthly"){
-        option1 <- "This is your first option for retirement: OGVXX"
-        option2 <- "This is your second option for retirement: GVMXX"
-        option3 <- "this is your third option for retirement: TTTXX"
+        option1 <- "This is your first option for retirement: JPMorgan US Government Money Market Fund;Capital"
+        option2 <- "This is your second option for retirement: State Street US Government Money Market Fund; Prem"
+        option3 <- "This is your third option for retirement: BlackRock Liquidity Treaury Trust Fund; Institutional"
         interest_rate_op1 <- data["OGVXX",4]
         interest_rate_op2 <- data["GVMXX",4]
         interest_rate_op3 <- data["TTTXX",4]
       }
       else if (input$goals_in == "Retirement" & input$year_in %in% c(20,25,30,35,40,45,50) & 
           input$risk_in == "Medium" & input$type_in == "Lump Sum"){
-        option1 <- "This is your first option for retirement: VFFSX"
-        option2 <- "This is your second option for retirement: TFDXX"
-        option3 <- "this is your third option for retirement: VINIX"
+        option1 <- "This is your first option for retirement: Vanguard 500 Index Fund; Institutional Select"
+        option2 <- "This is your second option for retirement: BlackRock Liquidity FedFund; Institutional"
+        option3 <- "This is your third option for retirement: Vanguard Institutional Index Fund; Institutional"
         interest_rate_op1 <- data["VFFSX",4]
         interest_rate_op2 <- data["TFDXX",4]
         interest_rate_op3 <- data["VINIX",4]
       }
       else if (input$goals_in == "Retirement" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "Low" & input$type_in == "Lump Sum"){
-        option1 <- "This is your first option for retirement: VMFXX"
-        option2 <- "This is your second option for retirement: VTSAX"
-        option3 <- "this is your third option for retirement: FXAIX"
+        option1 <- "This is your first option for retirement: Vanguard Federal Money Market Fund; Investor"
+        option2 <- "This is your second option for retirement: Vanguard Total STock Market Index Fund; Admiral"
+        option3 <- "This is your third option for retirement: Fidelity 500 Index Fund"
         interest_rate_op1 <- data["VMFXX",4]
         interest_rate_op2 <- data["VTSAX",4]
         interest_rate_op3 <- data["FXAIX",4]
       }
       else if (input$goals_in == "Retirement" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "High" & input$type_in == "Lump Sum"){
-        option1 <- "This is your first option for retirement: OGVXX"
-        option2 <- "This is your second option for retirement: GVMXX"
-        option3 <- "this is your third option for retirement: TTTXX"
+        option1 <- "This is your first option for retirement: JPMorgan US Government Money Market Fund;Capital"
+        option2 <- "This is your second option for retirement: State Street US Government Money Market Fund; Prem"
+        option3 <- "This is your third option for retirement: BlackRock Liquidity Treaury Trust Fund; Institutional"
         interest_rate_op1 <- data["OGVXX",4]
         interest_rate_op2 <- data["GVMXX",4]
         interest_rate_op3 <- data["TTTXX",4]
@@ -115,108 +115,108 @@ shinyServer(function(input, output) {
       
     else if (input$goals_in == "Savings" & input$year_in %in% c(5,10,15) & 
              input$risk_in == "Medium" & input$type_in == "Monthly"){
-      option1 <- "This is your first option for savings: MVRXX"
-      option2 <- "This is your second option for savings: VMRXX"
-      option3 <- "this is your third option for savings: AGTHX"
+      option1 <- "This is your first option for savings: Morgan Stanley Inst Liq Government Port; Institutional"
+      option2 <- "This is your second option for savings: Vanguard Cash Reserved Federal Money Market Fd; Adm"
+      option3 <- "This is your third option for savings: American Funds Growth Fund of America"
       interest_rate_op1 <- data["MVRXX",3]
       interest_rate_op2 <- data["VMRXX",3]
       interest_rate_op3 <- data["AGTHX",3]
     }
     else if (input$goals_in == "Savings" & input$year_in %in% c(5,10,15) & 
                input$risk_in == "Low" & input$type_in == "Monthly"){
-        option1 <- "This is your first option for Savings: VSMPX"
-        option2 <- "This is your second option for Savings: SPAXX"
-        option3 <- "this is your third option for Savings: VFIAX"
+        option1 <- "This is your first option for savings: Vanguard Total STock Market Index Fund; Institutional Plus"
+        option2 <- "This is your second option for savings: Fidelity Government Money Market Fund"
+        option3 <- "This is your third option for savings: Vanguard 500 Index Fund; Admiral"
         interest_rate_op1 <- data["VSMPX",3]
         interest_rate_op2 <- data["SPAXX",3]
         interest_rate_op3 <- data["VFIAX",3]
       }
       else if (input$goals_in == "Savings" & input$year_in %in% c(5,10,15) & 
                input$risk_in == "High" & input$type_in == "Monthly"){
-        option1 <- "This is your first option for Savings: FRGXX"
-        option2 <- "This is your second option for Savings: VTBNX"
-        option3 <- "this is your third option for Savings: VTBIX"
+        option1 <- "This is your first option for savings: Fidelity Instl Government Portfolio; Instiutional"
+        option2 <- "This is your second option for savings: Vanguard Total Bond Market II Index Fund; Instituational"
+        option3 <- "This is your third option for savings: Vanguard Total Bond Market II Index Fund; Investor"
         interest_rate_op1 <- data["FRGXX",3]
         interest_rate_op2 <- data["VTBNX",3]
         interest_rate_op3 <- data["VTBIX",3]
       }
       else if (input$goals_in == "Savings" & input$year_in %in% c(5,10,15) & 
                input$risk_in == "Medium" & input$type_in == "Lump Sum"){
-        option1 <- "This is your first option for Savings: MVRXX"
-        option2 <- "This is your second option for Savings: VMRXX"
-        option3 <- "this is your third option for Savings: AGTHX"
+        option1 <- "This is your first option for savings: Morgan Stanley Inst Liq Government Port; Institutional"
+        option2 <- "This is your second option for savings: Vanguard Cash Reserved Federal Money Market Fd; Adm"
+        option3 <- "This is your third option for savings: American Funds Growth Fund of America"
         interest_rate_op1 <- data["MVRXX",3]
         interest_rate_op2 <- data["VMRXX",3]
         interest_rate_op3 <- data["AGTHX",3]
       }
       else if (input$goals_in == "Savings" & input$year_in %in% c(5,10,15) & 
                input$risk_in == "Low" & input$type_in == "Lump Sum"){
-        option1 <- "This is your first option for Savings: VSMPX"
-        option2 <- "This is your second option for Savings: SPAXX"
-        option3 <- "this is your third option for Savings: VFIAX"
+        option1 <- "This is your first option for savings: Vanguard Total STock Market Index Fund; Institutional Plus"
+        option2 <- "This is your second option for savings: Fidelity Government Money Market Fund"
+        option3 <- "This is your third option for savings: Vanguard 500 Index Fund; Admiral"
         interest_rate_op1 <- data["VSMPX",3]
         interest_rate_op2 <- data["SPAXX",3]
         interest_rate_op3 <- data["VFIAX",3]
       }
       else if (input$goals_in == "Savings" & input$year_in %in% c(5,10,15) & 
                input$risk_in == "High" & input$type_in == "Lump Sum"){
-        option1 <- "This is your first option for Savings: FRGXX"
-        option2 <- "This is your second option for Savings: VTBNX"
-        option3 <- "this is your third option for Savings: VTBIX"
+        option1 <- "This is your first option for savings: Fidelity Instl Government Portfolio; Instiutional"
+        option2 <- "This is your second option for savings: Vanguard Total Bond Market II Index Fund; Instituational"
+        option3 <- "This is your third option for savings: Vanguard Total Bond Market II Index Fund; Investor"
         interest_rate_op1 <- data["FRGXX",3]
         interest_rate_op2 <- data["VTBNX",3]
         interest_rate_op3 <- data["VTBIX",3]
       }
       else if (input$goals_in == "Savings" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "Medium" & input$type_in == "Monthly"){
-        option1 <- "This is your first option for Savings: MVRXX"
-        option2 <- "This is your second option for Savings: VFFSX"
-        option3 <- "this is your third option for Savings: AGTHX"
+        option1 <- "This is your first option for savings: Morgan Stanley Inst Liq Government Port; Institutional"
+        option2 <- "This is your second option for savings: Vanguard 500 Index Fund; Institutional Select"
+        option3 <- "This is your third option for savings: American Funds Growth Fund of America"
         interest_rate_op1 <- data["MVRXX",4]
         interest_rate_op2 <- data["VFFSX",4]
         interest_rate_op3 <- data["AGTHX",4]
       }
       else if (input$goals_in == "Savings" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "Low" & input$type_in == "Monthly"){
-        option1 <- "This is your first option for Savings: VMFXX"
-        option2 <- "This is your second option for Savings: VTSAX"
-        option3 <- "this is your third option for Savings: FXAIX"
+        option1 <- "This is your first option for savings: Vanguard Federal Money Market Fund; Investor"
+        option2 <- "This is your second option for savings: Vanguard Total STock Market Index Fund; Admiral"
+        option3 <- "This is your third option for savings: Fidelity 500 Index Fund"
         interest_rate_op1 <- data["VMFXX",4]
         interest_rate_op2 <- data["VTSAX",4]
         interest_rate_op3 <- data["FXAIX",4]
       }
       else if (input$goals_in == "Savings" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "High" & input$type_in == "Monthly"){
-        option1 <- "This is your first option for Savings: VTSAX"
-        option2 <- "This is your second option for Savings: VMFXX"
-        option3 <- "this is your third option for Savings: SPAXX"
+        option1 <- "This is your first option for savings: Vanguard Total STock Market Index Fund; Admiral"
+        option2 <- "This is your second option for savings: Vanguard Federal Money Market Fund; Investor"
+        option3 <- "This is your third option for savings: Fidelity Government Money Market Fund"
         interest_rate_op1 <- data["VTSAX",4]
         interest_rate_op2 <- data["VMFXX",4]
         interest_rate_op3 <- data["SPAXX",4]
       }
       else if (input$goals_in == "Savings" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "Medium" & input$type_in == "Lump Sum"){
-        option1 <- "This is your first option for Savings: MVRXX"
-        option2 <- "This is your second option for Savings: VFFSX"
-        option3 <- "this is your third option for Savings: AGTHX"
+        option1 <- "This is your first option for savings: Morgan Stanley Inst Liq Government Port; Institutional"
+        option2 <- "This is your second option for savings: Vanguard 500 Index Fund; Institutional Select"
+        option3 <- "This is your third option for savings: American Funds Growth Fund of America"
         interest_rate_op1 <- data["MVRXX",4]
         interest_rate_op2 <- data["VFFSX",4]
         interest_rate_op3 <- data["AGTHX",4]
       }
       else if (input$goals_in == "Savings" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "Low" & input$type_in == "Lump Sum"){
-        option1 <- "This is your first option for Savings: VMFXX"
-        option2 <- "This is your second option for Savings: VTSAX"
-        option3 <- "this is your third option for Savings: FXAIX"
+        option1 <- "This is your first option for savings: Vanguard Federal Money Market Fund; Investor"
+        option2 <- "This is your second option for savings: Vanguard Total STock Market Index Fund; Admiral"
+        option3 <- "This is your third option for savings: Fidelity 500 Index Fund"
         interest_rate_op1 <- data["VMFXX",4]
         interest_rate_op2 <- data["VTSAX",4]
         interest_rate_op3 <- data["FXAIX",4]
       }
       else if (input$goals_in == "Savings" & input$year_in %in% c(20,25,30,35,40,45,50) & 
                input$risk_in == "High" & input$type_in == "Lump Sum"){
-        option1 <- "This is your first option for Savings: VTSAX"
-        option2 <- "This is your second option for Savings: VMFXX"
-        option3 <- "this is your third option for Savings: SPAXX"
+        option1 <- "This is your first option for savings: Vanguard Total STock Market Index Fund; Admiral"
+        option2 <- "This is your second option for savings: Vanguard Federal Money Market Fund; Investor"
+        option3 <- "This is your third option for savings: Fidelity Government Money Market Fund"
         interest_rate_op1 <- data["VTSAX",4]
         interest_rate_op2 <- data["VMFXX",4]
         interest_rate_op3 <- data["SPAXX",4]
